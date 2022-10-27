@@ -43,7 +43,7 @@ client.connect((err) => {
     });
   });
 
-  app.put("/AddUsers", async (req, res) => {
+  app.put("/UpdateUsers", async (req, res) => {
     const user = req.body;
     const filter = { email: user.email };
     const options = { upsert: true };
@@ -64,7 +64,7 @@ client.connect((err) => {
     next();
   }
 
-  app.put("/AddUsers/Merchant", verifyToken, async (req, res) => {
+  app.put("/AddMerchant", verifyToken, async (req, res) => {
     const user = req.body;
     const requester = req.decodedEmail;
 
@@ -96,10 +96,6 @@ client.connect((err) => {
     }
     res.json({ merchant: isMerchant });
   });
-
-
-
-
 
   app.post("/AddShop", async (req, res) => {
     const newShop = req.body;
